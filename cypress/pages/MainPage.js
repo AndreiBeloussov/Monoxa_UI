@@ -7,6 +7,13 @@ class MainPage {
         this.faceBookIcon = 'a.facebook'; // a. - shows the link with class facebook
         this.instagramIcon = 'a.instagram';
         this.emailIcon = 'a.email';
+        this.monoxaLogo = '#logo'; // # - for ID
+        this.headerNavigationBar = '#masthead .flex-left ul';
+        this.homeLink = 'a.nav-top-link[href="https://monoxatoys.com/"]'
+        this.tutorialsLink = 'a.nav-top-link[href="https://monoxatoys.com/product-category/tutorials/"]'
+        this.dollsLink = 'a.nav-top-link[href="https://monoxatoys.com/product-category/exclusive-dolls/"]'
+        this.aboutLink = 'a.nav-top-link[href="https://monoxatoys.com/about/"]'
+        this.contactLinks = 'a.nav-top-link[href="https://monoxatoys.com/contact/"]'
     }
 
     // This is opens the main page
@@ -43,6 +50,27 @@ class MainPage {
        emailLinkIsCorrect() {
         cy.get(this.emailIcon).should('have.attr', 'href').and('include', 'mailto:info@monoxatoys.com')
        }
+
+       //This is to check that Logo on main page is visible
+       logoIsVisible() {
+        cy.get(this.monoxaLogo).should('be.visible')
+       }
+
+       //This is to check Navigation bar is visible
+       navigationBarisVisible() {
+        cy.get(this.headerNavigationBar).should('be.visible')
+       }
+       //Links inside Navigation bar are correct
+       navigationBarLinksAreCorrect() {
+    cy.get(this.homeLink).should('be.visible').and('contain.text', 'Home');
+    cy.get(this.tutorialsLink).should('be.visible').and('contain.text', 'Tutorials');
+    cy.get(this.dollsLink).should('be.visible').and('contain.text', 'Exclusive dolls');
+    cy.get(this.aboutLink).should('be.visible').and('contain.text', 'About');
+    cy.get(this.contactLinks).should('be.visible').and('contain.text', 'Contact');
+  };
+       
+
+    
 
     greetingShouldBeVisible() {
         cy.get(this.greeting)

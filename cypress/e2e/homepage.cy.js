@@ -30,6 +30,15 @@ it('Email icon is visible and link is correct', () => {
   MainPage.emailLinkIsCorrect();
 });
 
+it('Logo on the main page is visible', () => {
+  MainPage.logoIsVisible();
+})
+
+it.only('Navigation bar is visible and links are correct', () => {
+  MainPage.navigationBarisVisible();
+  MainPage.navigationBarLinksAreCorrect();
+})
+
 it('Main page is opened and greeting is visible', () => {
 MainPage.greetingShouldBeVisible();
 });
