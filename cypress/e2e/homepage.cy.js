@@ -55,10 +55,17 @@ it('Know me better functionality', () => {
   MainPage.knowMeBetterRedirects();
 });
 
-it.only('Banners functionality', () => {
+it('Banners functionality', () => {
   MainPage.bannersFunctionality();
-})
+});
 
+it('Best selling products', () => {
+  MainPage.bestSellingIsVisible();
+});
+
+it('Star and Comments are visible', () => {
+  MainPage.starsCommentsAreVisible();
+});
 
 });
 

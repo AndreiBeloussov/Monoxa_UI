@@ -9,37 +9,40 @@ class MainPage {
         this.emailIcon = 'a.email';
         this.monoxaLogo = '#logo'; // # - for ID
         this.headerNavigationBar = '#masthead .flex-left ul';
-        this.homeLink = 'a.nav-top-link[href="https://monoxatoys.com/"]'
-        this.tutorialsLink = 'a.nav-top-link[href="https://monoxatoys.com/product-category/tutorials/"]'
-        this.dollsLink = 'a.nav-top-link[href="https://monoxatoys.com/product-category/exclusive-dolls/"]'
-        this.aboutLink = 'a.nav-top-link[href="https://monoxatoys.com/about/"]'
-        this.contactLinks = 'a.nav-top-link[href="https://monoxatoys.com/contact/"]'
-        this.searcIcon = 'i.icon-search'
-        this.greetingsPhoto = 'div.img.has-hover.x50.y10'
-        this.greeting1 = 'h3.alt-font' //Hey Sweetie
-        this.greeting2 = 'h4.uppercase' // I am so glad to see you! Come on in ...
-        this.knowMeBetter = 'a.button.secondary' //Know me better button
-        this.tutorialsBanner = 'a.uppercase[href="https://monoxatoys.com/product-category/tutorials/"]'
-        this.dollsBanner = 'a.uppercase[href="https://monoxatoys.com/product-category/exclusive-dolls/"]'
-        this.aboutBanner = 'a.uppercase[href="https://monoxatoys.com/elements/pages/about"]'
+        this.homeLink = 'a.nav-top-link[href="https://monoxatoys.com/"]';
+        this.tutorialsLink = 'a.nav-top-link[href="https://monoxatoys.com/product-category/tutorials/"]';
+        this.dollsLink = 'a.nav-top-link[href="https://monoxatoys.com/product-category/exclusive-dolls/"]';
+        this.aboutLink = 'a.nav-top-link[href="https://monoxatoys.com/about/"]';
+        this.contactLinks = 'a.nav-top-link[href="https://monoxatoys.com/contact/"]';
+        this.searcIcon = 'i.icon-search';
+        this.greetingsPhoto = 'div.img.has-hover.x50.y10';
+        this.greeting1 = 'h3.alt-font'; //Hey Sweetie
+        this.greeting2 = 'h4.uppercase'; // I am so glad to see you! Come on in ...
+        this.knowMeBetter = 'a.button.secondary'; //Know me better button
+        this.tutorialsBanner = 'a.uppercase[href="https://monoxatoys.com/product-category/tutorials/"]';
+        this.dollsBanner = 'a.uppercase[href="https://monoxatoys.com/product-category/exclusive-dolls/"]';
+        this.aboutBanner = 'a.uppercase[href="https://monoxatoys.com/elements/pages/about"]';
+        this.bestSellingItems = '.row-slider .product-small.col';
+        this.starsAndComments = '#banner-2133327878 .fill'; 
+        this.comment = '.icon-box-text';
 
     }
 
     // This is opens the main page
     openMainPage() {
         cy.visit(this.mainPage);
-    }
+    };
 
     //This is to check that left upper banner is visible and there is a text inside
     upperGuruIsVisible() {
         cy.get(this.upperGuru)
         .should('be.visible').
         should('contain.text', this.upperGuruText);
-       }
+       };
        //This is to check that FB icon is visible and correct link inside
        facebookIconIsVisible () {
         cy.get(this.faceBookIcon).should('be.visible')
-       }
+       };
        facebookLinkCorrect() {
         cy.get(this.faceBookIcon).should('have.attr', 'href').and('include', 'https://www.facebook.com/monoxatoys/')
        };
@@ -47,28 +50,28 @@ class MainPage {
        //This is to check that Insta icon is visible and correct link inside
        instagramIconIsVisible() {
         cy.get(this.instagramIcon).should('be.visible')
-       }
+       };
        instagramLinksIsCorrect() {
         cy.get(this.instagramIcon).should('have.attr', 'href').and('include', 'https://www.instagram.com/monoxatoys/')
-       }
+       };
 
        //This is to check that email icon is visible and correct adress inside
        emailIconIsVisible() {
         cy.get(this.emailIcon).should('be.visible')
-       }
+       };
        emailLinkIsCorrect() {
         cy.get(this.emailIcon).should('have.attr', 'href').and('include', 'mailto:info@monoxatoys.com')
-       }
+       };
 
        //This is to check that Logo on main page is visible
        logoIsVisible() {
         cy.get(this.monoxaLogo).should('be.visible')
-       }
+       };
 
        //This is to check Navigation bar is visible
        navigationBarisVisible() {
         cy.get(this.headerNavigationBar).should('be.visible')
-       }
+       };
        //Links inside Navigation bar are correct
        navigationBarLinksAreCorrect() {
     cy.get(this.homeLink).should('be.visible').and('contain.text', 'Home');
@@ -81,18 +84,18 @@ class MainPage {
   //Search icon is visible
   searchIconIsVisible() {
     cy.get(this.searcIcon).should('be.visible')
-  }
+  };
 
   // Greetings photo is loaded
   greetingsPhotoIsVisible() {
     cy.get(this.greetingsPhoto).should('be.visible')
-  }
+  };
        
     greetingShouldBeVisible() {
-        cy.get(this.greeting1).should('be.visible').and('contain.text', 'Hey sweetie');
+        cy.get(this.greeting1, {timeout: 10000}).should('be.visible').and('contain.text', 'Hey sweetie');
         cy.get(this.greeting2).should('be.visible').and('contain.text', 'I am so glad to see you');
         cy.get(this.greeting3).should('be.visible').and('contain.text', 'Roxanne – Amigurumi guru from Estonia');
-    }
+    };
 
 // Know me better button is visible and forwards to About page
 
@@ -100,7 +103,7 @@ knowMeBetterRedirects() {
     cy.get(this.knowMeBetter).click(); //Find and click on button
     cy.url().should('include', 'https://monoxatoys.com/about/'); // link is correct
     cy.get('h1.lead').should('contain', 'About') //About text is visible
-}
+};
 
 //Banners functionality
 bannersFunctionality() {
@@ -119,7 +122,25 @@ bannersFunctionality() {
   cy.url().should('include', 'https://monoxatoys.com/about/');
   cy.go('back');
   cy.url().should('eq', this.mainPage );
-}
+};
+
+//At least 1 best selling item is shown
+bestSellingIsVisible() {
+  cy.get(this.bestSellingItems, {timeout: 10000}).should('exist')
+  .and ('have.length.at.least', 1);
+};
+
+//At least one comments is shown
+starsCommentsAreVisible() {
+  cy.get(this.starsAndComments)
+  .find(this.comment)
+  .should('exist')
+  .and('be.visible')
+  };
+
+
+
+
 
 
 
