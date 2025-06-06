@@ -1,6 +1,6 @@
 class MainPage {
     constructor() {
-        this.mainPage = 'https://monoxatoys.com';
+        this.mainPage = 'https://monoxatoys.com/';
         this.greeting3 = 'p.lead'; //I'm Roxanne
         this.upperGuru = 'strong.uppercase'; //Upper left banner (There are more than one selector with this name, use contain.text in test)
         this.upperGuruText = 'Amigurumi guru from Estonia'; //Text in upper left banner
@@ -18,6 +18,10 @@ class MainPage {
         this.greetingsPhoto = 'div.img.has-hover.x50.y10'
         this.greeting1 = 'h3.alt-font' //Hey Sweetie
         this.greeting2 = 'h4.uppercase' // I am so glad to see you! Come on in ...
+        this.knowMeBetter = 'a.button.secondary' //Know me better button
+        this.tutorialsBanner = 'a.uppercase[href="https://monoxatoys.com/product-category/tutorials/"]'
+        this.dollsBanner = 'a.uppercase[href="https://monoxatoys.com/product-category/exclusive-dolls/"]'
+        this.aboutBanner = 'a.uppercase[href="https://monoxatoys.com/elements/pages/about"]'
 
     }
 
@@ -84,14 +88,44 @@ class MainPage {
     cy.get(this.greetingsPhoto).should('be.visible')
   }
        
-
-    
-
     greetingShouldBeVisible() {
         cy.get(this.greeting1).should('be.visible').and('contain.text', 'Hey sweetie');
         cy.get(this.greeting2).should('be.visible').and('contain.text', 'I am so glad to see you');
         cy.get(this.greeting3).should('be.visible').and('contain.text', 'Roxanne – Amigurumi guru from Estonia');
     }
+
+// Know me better button is visible and forwards to About page
+
+knowMeBetterRedirects() {
+    cy.get(this.knowMeBetter).click(); //Find and click on button
+    cy.url().should('include', 'https://monoxatoys.com/about/'); // link is correct
+    cy.get('h1.lead').should('contain', 'About') //About text is visible
+}
+
+//Banners functionality
+bannersFunctionality() {
+  //Tutorials banner
+  cy.get(this.tutorialsBanner).click();
+  cy.url().should('include', 'https://monoxatoys.com/product-category/tutorials/');
+  cy.go('back');
+  cy.url().should('eq', this.mainPage );
+  //Exclusive dolls banner
+  cy.get(this.dollsBanner).click();
+    cy.url().should('include', 'https://monoxatoys.com/product-category/exclusive-dolls/');
+  cy.go('back');
+  cy.url().should('eq', this.mainPage );
+  //About banner
+  cy.get(this.aboutBanner).click();
+  cy.url().should('include', 'https://monoxatoys.com/about/');
+  cy.go('back');
+  cy.url().should('eq', this.mainPage );
+}
+
+
+
+
+
+
 }
 
 export default new MainPage()

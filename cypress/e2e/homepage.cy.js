@@ -47,9 +47,17 @@ it('Greetings photo', () => {
   MainPage.greetingsPhotoIsVisible()
 })
 
-it.only('Greeting is visible', () => {
+it('Greeting is visible', () => {
 MainPage.greetingShouldBeVisible();
 });
+
+it('Know me better functionality', () => {
+  MainPage.knowMeBetterRedirects();
+});
+
+it.only('Banners functionality', () => {
+  MainPage.bannersFunctionality();
+})
 
 
 });
