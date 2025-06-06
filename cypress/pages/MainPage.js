@@ -1,7 +1,7 @@
 class MainPage {
     constructor() {
         this.mainPage = 'https://monoxatoys.com';
-        this.greeting = 'p.lead'; //I'm Roxanne
+        this.greeting3 = 'p.lead'; //I'm Roxanne
         this.upperGuru = 'strong.uppercase'; //Upper left banner (There are more than one selector with this name, use contain.text in test)
         this.upperGuruText = 'Amigurumi guru from Estonia'; //Text in upper left banner
         this.faceBookIcon = 'a.facebook'; // a. - shows the link with class facebook
@@ -14,6 +14,11 @@ class MainPage {
         this.dollsLink = 'a.nav-top-link[href="https://monoxatoys.com/product-category/exclusive-dolls/"]'
         this.aboutLink = 'a.nav-top-link[href="https://monoxatoys.com/about/"]'
         this.contactLinks = 'a.nav-top-link[href="https://monoxatoys.com/contact/"]'
+        this.searcIcon = 'i.icon-search'
+        this.greetingsPhoto = 'div.img.has-hover.x50.y10'
+        this.greeting1 = 'h3.alt-font' //Hey Sweetie
+        this.greeting2 = 'h4.uppercase' // I am so glad to see you! Come on in ...
+
     }
 
     // This is opens the main page
@@ -68,13 +73,24 @@ class MainPage {
     cy.get(this.aboutLink).should('be.visible').and('contain.text', 'About');
     cy.get(this.contactLinks).should('be.visible').and('contain.text', 'Contact');
   };
+
+  //Search icon is visible
+  searchIconIsVisible() {
+    cy.get(this.searcIcon).should('be.visible')
+  }
+
+  // Greetings photo is loaded
+  greetingsPhotoIsVisible() {
+    cy.get(this.greetingsPhoto).should('be.visible')
+  }
        
 
     
 
     greetingShouldBeVisible() {
-        cy.get(this.greeting)
-  .should('be.visible').and('contain.text', 'Roxanne – Amigurumi guru from Estonia');
+        cy.get(this.greeting1).should('be.visible').and('contain.text', 'Hey sweetie');
+        cy.get(this.greeting2).should('be.visible').and('contain.text', 'I am so glad to see you');
+        cy.get(this.greeting3).should('be.visible').and('contain.text', 'Roxanne – Amigurumi guru from Estonia');
     }
 }
 

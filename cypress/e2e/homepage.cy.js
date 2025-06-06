@@ -34,12 +34,20 @@ it('Logo on the main page is visible', () => {
   MainPage.logoIsVisible();
 })
 
-it.only('Navigation bar is visible and links are correct', () => {
+it('Navigation bar is visible and links are correct', () => {
   MainPage.navigationBarisVisible();
   MainPage.navigationBarLinksAreCorrect();
 })
 
-it('Main page is opened and greeting is visible', () => {
+it('Search icon is visible', () => {
+MainPage.searchIconIsVisible();
+});
+
+it('Greetings photo', () => {
+  MainPage.greetingsPhotoIsVisible()
+})
+
+it.only('Greeting is visible', () => {
 MainPage.greetingShouldBeVisible();
 });
 
