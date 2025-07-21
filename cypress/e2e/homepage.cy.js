@@ -64,7 +64,7 @@ it('Best selling products', () => {
 });
 
 it('Star and Comments are visible', () => {
-  MainPage.starsCommentsAreVisible();
+  MainPage.starCommentisVisible();
 });
 
 });

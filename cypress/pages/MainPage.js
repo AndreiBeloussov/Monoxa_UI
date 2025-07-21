@@ -23,8 +23,7 @@ class MainPage {
         this.dollsBanner = 'a.uppercase[href="https://monoxatoys.com/product-category/exclusive-dolls/"]';
         this.aboutBanner = 'a.uppercase[href="https://monoxatoys.com/elements/pages/about"]';
         this.bestSellingItems = '.row-slider .product-small.col';
-        this.starsAndComments = '#banner-2133327878 .fill'; 
-        this.comment = '.icon-box-text';
+        this.bannerComment = '.testimonial-text > p'; // banner with comments and stars ;
 
     }
 
@@ -131,12 +130,14 @@ bestSellingIsVisible() {
 };
 
 //At least one comments is shown
-starsCommentsAreVisible() {
-  cy.get(this.starsAndComments)
-  .find(this.comment)
-  .should('exist')
-  .and('be.visible')
-  };
+starCommentisVisible() {
+  cy.get(this.bannerComment) //find banner
+  .should('be.visible')
+  //Put ekent to variable $el
+  .and(($el) => {
+    expect($el.text().trim()).to.not.be.empty; //$el.text - aquire text inside, .trim - deletes spaces
+  });
+}
 
 
 
