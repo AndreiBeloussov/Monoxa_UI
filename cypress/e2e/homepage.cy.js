@@ -55,6 +55,7 @@ it('Know me better functionality', () => {
   MainPage.knowMeBetterRedirects();
 });
 
+//Check that all three banners Tutorial/Exclusive dolls/About are functional
 it('Banners functionality', () => {
   MainPage.bannersFunctionality();
 });
@@ -65,6 +66,18 @@ it('Best selling products', () => {
 
 it('Star and Comments are visible', () => {
   MainPage.starCommentisVisible();
+});
+
+it('Latest list with products', () => {
+  MainPage.latestProductList();
+});
+
+it('Best selling list with products', () => {
+  MainPage.bestSellingProductsList();
+})
+
+it.only('Top rated list with products', () => {
+  MainPage.topRatedProductsList();
 });
 
 });
