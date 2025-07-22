@@ -104,24 +104,44 @@ it('Bottom Contact functionality', () => {
   MainPage.bottomContactFunctionality();
 });
 
-it.only('About the Shop visibility', () => {
+it('About the Shop visibility', () => {
   MainPage.aboutTheShopVisible()
 });
 
-it.only('Making a purchase functionality', () => {
+it('Making a purchase functionality', () => {
   MainPage.makingPurchaseFunctionality()
 });
 
-it.only('Terms and Conditions functionality', () => {
+it('Terms and Conditions functionality', () => {
   MainPage.termsConditionsFunctionality()
 });
 
-it.only('Privacy Policy functionality', () => {
+it('Privacy Policy functionality', () => {
   MainPage.privacyPolicyFunctionality()
 });
 
-it.only('Cookies functionality', () => {
+it('Cookies functionality', () => {
   MainPage.cookiesFunctionality()
+});
+
+it('Contacts visibility', () => {
+  MainPage.contactsFunctionality()
+});
+
+it('Contact information is correct', () => {
+  MainPage.bottomContactInfoCorrect()
+});
+
+it('Bottom screen Email link is correct', () => {
+  MainPage.bottomEmailLinkFunctionality()
+});
+
+it('Bottom screen Facebook link is correct', () => {
+  MainPage.bottomFacebookIconFunctionality()
+});
+
+it('Bottom screen Instagram link is correct', () => {
+  MainPage.bottomInstaIconFunctionality()
 });
 
 

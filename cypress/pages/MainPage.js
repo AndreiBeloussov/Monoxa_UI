@@ -27,21 +27,24 @@ class MainPage {
     this.latestProductsList = '#woocommerce_products-12 .product_list_widget > li'; //Latest products
     this.productsPrice = '.woocommerce-Price-amount'; //Products price
     this.productsName = '.product-title'; // Products name 
-    this.bestSellingProducts = '#woocommerce_products-11 .product_list_widget > li'; //Best Selling products
+    this.bestSellingProducts = '#woocommerce_products-11 .product_list_widget > li'; // Best Selling products
     this.topRatedProducts = '#woocommerce_top_rated_products-3 .product_list_widget > li'; // Top rated products
-    this.bottomNavigation = '#nav_menu-5 .widget-title'; //Bottom navigation
+    this.bottomNavigation = '#nav_menu-5 .widget-title'; // Bottom navigation
     this.bottomHome = '#menu-main-menu-1 .menu-item-home a'; // Bottom home
-    this.bottomTutorials = '#menu-main-menu-1 .menu-item-697 a'; //Bottom tutorials
+    this.bottomTutorials = '#menu-main-menu-1 .menu-item-697 a'; // Bottom tutorials
     this.bottomDolls = '#menu-main-menu-1 .menu-item-698 a'; // Bottom Exclusive dolls
     this.bottomAbout = '#menu-main-menu-1 .menu-item-559 a'; // Bottom About
     this.bottomContact = '#menu-main-menu-1 .menu-item-560 a'; // Bottom Contact
     this.aboutTheShop = '#nav_menu-8 .widget-title'; //About the shop
-    this.makingPurchase = '#menu-secondary .menu-item-686 a'; //Making a purchase
-    this.termsConditions = '#menu-secondary .menu-item-687 a'; //Terms and Conditions
-    this.privacyPolicy = '#menu-secondary .menu-item-684 a'; //Privacy Policy
+    this.makingPurchase = '#menu-secondary .menu-item-686 a'; // Making a purchase
+    this.termsConditions = '#menu-secondary .menu-item-687 a'; // Terms and Conditions
+    this.privacyPolicy = '#menu-secondary .menu-item-684 a'; // Privacy Policy
     this.cookies = '#menu-secondary .menu-item-685 a'; // Cookies
-
-
+    this.contacts = '#block_widget-2 .widget-title'; // Contacts
+    this.bottomEmailLink = '#block_widget-2 a[href^="mailto:"]'; //Email link
+    this.bottomFacebookIcon = '#block_widget-2 a[aria-label="Follow on Facebook"]'; //Facebook icon
+    this.bottomInstaIcon = '#block_widget-2 a[aria-label="Follow on Instagram"]'; //Insta icon
+    this.bottomContactInfo = '#block_widget-2 p'; //Contact information
 
   }
 
@@ -347,6 +350,47 @@ topRatedProductsList() {
     cy.get(this.cookies).click()
     cy.url().should('include', 'https://monoxatoys.com/cookies/')
     }; 
+
+    //Contact is visible
+    contactsFunctionality() {
+      cy.get(this.contacts)
+        .should('be.visible')
+        .and('contain', 'Contacts');
+    };
+
+    //Contact information is correct
+    bottomContactInfoCorrect() {
+      cy.get(this.bottomContactInfo)
+      .should('be.visible')
+      .invoke('text')   //takes text from element <p>
+      .then((text) => {
+      expect(text).to.match(/Monoxa OÜ\s+Reg nr 14767395\s+Kihnu 10-15, 13913, Tallinn, Estonia/);
+  });
+    };
+
+    //Email link functionality
+    bottomEmailLinkFunctionality() {
+      cy.get(this.bottomEmailLink)
+      .should('be.visible')
+      .and('contain', 'info@monoxatoys.com')
+      .and('have.attr', 'href', 'mailto:info@monoxatoys.com');
+    };
+
+    //Facebook link functionality
+    bottomFacebookIconFunctionality() {
+      cy.get(this.bottomFacebookIcon)
+      .should('be.visible')
+      .and('have.attr', 'href', 'https://www.facebook.com/monoxatoys/')
+      .and('have.attr', 'target', '_blank');
+    };
+
+    //Instagram link functionality
+    bottomInstaIconFunctionality() {
+      cy.get(this.bottomInstaIcon)
+      .should('be.visible')
+      .and('have.attr', 'href', 'https://www.instagram.com/monoxatoys/')
+      .and('have.attr', 'target', '_blank');
+    };
 
 
 
