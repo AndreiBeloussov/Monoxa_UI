@@ -29,6 +29,13 @@ class MainPage {
     this.productsName = '.product-title'; // Products name 
     this.bestSellingProducts = '#woocommerce_products-11 .product_list_widget > li'; //Best Selling products
     this.topRatedProducts = '#woocommerce_top_rated_products-3 .product_list_widget > li'; // Top rated products
+    this.bottomNavigation = '#nav_menu-5 .widget-title'; //Bottom navigation
+    this.bottomHome = '#menu-main-menu-1 .menu-item-home a'; // Bottom home
+    this.bottomTutorials = '#menu-main-menu-1 .menu-item-697 a'; //Bottom tutorials
+    this.bottomDolls = '#menu-main-menu-1 .menu-item-698 a'; // Bottom Exclusive dolls
+    this.bottomAbout = '#menu-main-menu-1 .menu-item-559 a'; // Bottom About
+    this.bottomContact = '#menu-main-menu-1 .menu-item-560 a'; // Bottom Contact
+
 
   }
 
@@ -200,7 +207,7 @@ bestSellingProductsList() {
     })
 };
 
-//Top rated products list is visible, has and images and prices
+//Top rated products list is visible, has an images and prices
 topRatedProductsList() {
     //List is visible and have at least 1 element
     cy.get(this.topRatedProducts).should('exist')
@@ -227,6 +234,65 @@ topRatedProductsList() {
         });
     })
 };
+
+  //Navigation at the bottom tests
+
+  //Navigation is visible
+  bottomNavigationVisible() {
+    cy.get(this.bottomNavigation).should('be.visible')
+      .and('contain.text', 'Navigation')
+  };
+  //Home is visible link is correct, and working
+  bottomHomeFunctionality() {
+    cy.get(this.bottomHome).should('be.visible').and('contain', 'Home') //Visible and correct name
+      .and('have.attr', 'href', 'https://monoxatoys.com/'); //Correct link inside
+    //Link is working
+    cy.get(this.bottomHome).click()
+    cy.url().should('include', 'https://monoxatoys.com');
+  };
+  // Tutorials
+  bottomTutorialsFunctionality() {
+    cy.get(this.bottomTutorials).should('be.visible') // Visible
+      .and('contain', 'Tutorials') // Name is correct
+      .and('have.attr', 'href', 'https://monoxatoys.com/product-category/tutorials/') //Link is correct
+
+    //Links is working
+    cy.get(this.bottomTutorials).click()
+    cy.url().should('include', 'https://monoxatoys.com/product-category/tutorials/')
+  };
+    //Exclusive dolls
+  bottomDollsFunctionality() {
+    cy.get(this.bottomDolls).should('be.visible') // Visible
+      .and('contain', 'Exclusive dolls') // Name is correct
+      .and('have.attr', 'href', 'https://monoxatoys.com/product-category/exclusive-dolls/') //Link is correct
+
+    //Links is working
+    cy.get(this.bottomDolls).click()
+    cy.url().should('include', 'https://monoxatoys.com/product-category/exclusive-dolls/')
+  };
+
+    //About
+    bottomAboutFunctionality() {
+      cy.get(this.bottomAbout).should('be.visible') // Visible
+      .and('contain', 'About') // Name is correct
+      .and('have.attr', 'href', 'https://monoxatoys.com/about/') //Link is correct
+
+    //Links is working
+    cy.get(this.bottomAbout).click()
+    cy.url().should('include', 'https://monoxatoys.com/about/')
+    };
+
+    //Contact
+    bottomContactFunctionality() {
+      cy.get(this.bottomContact).should('be.visible') // Visible
+      .and('contain', 'Contact') // Name is correct
+      .and('have.attr', 'href', 'https://monoxatoys.com/contact/') //Link is correct
+
+    //Links is working
+    cy.get(this.bottomContact).click()
+    cy.url().should('include', 'https://monoxatoys.com/contact/')
+    };
+
 
 
 

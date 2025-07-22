@@ -76,9 +76,44 @@ it('Best selling list with products', () => {
   MainPage.bestSellingProductsList();
 })
 
-it.only('Top rated list with products', () => {
+it('Top rated list with products', () => {
   MainPage.topRatedProductsList();
 });
+
+it('Bottom navigation test', () => {
+  MainPage.bottomNavigationVisible();
+});
+
+it('Bottom Home functionality', () => {
+  MainPage.bottomHomeFunctionality();
+});
+
+it.only('Bottom Tutorials functionality', () => {
+  MainPage.bottomTutorialsFunctionality();
+});
+
+it.only('Bottom Exclusive dolls functionality', () => {
+  MainPage.bottomDollsFunctionality();
+});
+
+it.only('Bottom About functionality', () => {
+  MainPage.bottomAboutFunctionality();
+});
+
+it.only('Bottom Contact functionality', () => {
+  MainPage.bottomContactFunctionality();
+});
+
+
+
+
+
+
+
+
+
+
+
 
 });
 
