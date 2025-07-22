@@ -35,6 +35,12 @@ class MainPage {
     this.bottomDolls = '#menu-main-menu-1 .menu-item-698 a'; // Bottom Exclusive dolls
     this.bottomAbout = '#menu-main-menu-1 .menu-item-559 a'; // Bottom About
     this.bottomContact = '#menu-main-menu-1 .menu-item-560 a'; // Bottom Contact
+    this.aboutTheShop = '#nav_menu-8 .widget-title'; //About the shop
+    this.makingPurchase = '#menu-secondary .menu-item-686 a'; //Making a purchase
+    this.termsConditions = '#menu-secondary .menu-item-687 a'; //Terms and Conditions
+    this.privacyPolicy = '#menu-secondary .menu-item-684 a'; //Privacy Policy
+    this.cookies = '#menu-secondary .menu-item-685 a'; // Cookies
+
 
 
   }
@@ -256,7 +262,7 @@ topRatedProductsList() {
       .and('contain', 'Tutorials') // Name is correct
       .and('have.attr', 'href', 'https://monoxatoys.com/product-category/tutorials/') //Link is correct
 
-    //Links is working
+    //Link is working
     cy.get(this.bottomTutorials).click()
     cy.url().should('include', 'https://monoxatoys.com/product-category/tutorials/')
   };
@@ -266,7 +272,7 @@ topRatedProductsList() {
       .and('contain', 'Exclusive dolls') // Name is correct
       .and('have.attr', 'href', 'https://monoxatoys.com/product-category/exclusive-dolls/') //Link is correct
 
-    //Links is working
+    //Link is working
     cy.get(this.bottomDolls).click()
     cy.url().should('include', 'https://monoxatoys.com/product-category/exclusive-dolls/')
   };
@@ -277,7 +283,7 @@ topRatedProductsList() {
       .and('contain', 'About') // Name is correct
       .and('have.attr', 'href', 'https://monoxatoys.com/about/') //Link is correct
 
-    //Links is working
+    //Link is working
     cy.get(this.bottomAbout).click()
     cy.url().should('include', 'https://monoxatoys.com/about/')
     };
@@ -288,11 +294,59 @@ topRatedProductsList() {
       .and('contain', 'Contact') // Name is correct
       .and('have.attr', 'href', 'https://monoxatoys.com/contact/') //Link is correct
 
-    //Links is working
+    //Link is working
     cy.get(this.bottomContact).click()
     cy.url().should('include', 'https://monoxatoys.com/contact/')
     };
 
+    //About the shop
+    aboutTheShopVisible() {
+      cy.get(this.aboutTheShop).should('be.visible')
+      .and('contain.text', 'About the shop')
+    };
+
+    // Making a purchase
+   makingPurchaseFunctionality() {
+      cy.get(this.makingPurchase).should('be.visible') // Visible
+      .and('contain', 'Making a purchase') // Name is correct
+      .and('have.attr', 'href', 'https://monoxatoys.com/making-a-purchase/') //Link is correct
+
+    //Link is working
+    cy.get(this.makingPurchase).click()
+    cy.url().should('include', 'https://monoxatoys.com/making-a-purchase/')
+    }; 
+
+    // Terms and Conditions
+    termsConditionsFunctionality() {
+      cy.get(this.termsConditions).should('be.visible') // Visible
+      .and('contain', 'Terms and Conditions') // Name is correct
+      .and('have.attr', 'href', 'https://monoxatoys.com/terms-and-conditions/') //Link is correct
+
+    //Link is working
+    cy.get(this.termsConditions).click()
+    cy.url().should('include', 'https://monoxatoys.com/terms-and-conditions/')
+    }; 
+    // Privacy Policy
+   privacyPolicyFunctionality() {
+      cy.get(this.privacyPolicy).should('be.visible') // Visible
+      .and('contain', 'Privacy Policy') // Name is correct
+      .and('have.attr', 'href', 'https://monoxatoys.com/privacy-policy/') //Link is correct
+
+    //Link is working
+    cy.get(this.privacyPolicy).click()
+    cy.url().should('include', 'https://monoxatoys.com/privacy-policy/')
+    };  
+
+    // Cookies
+    cookiesFunctionality() {
+      cy.get(this.cookies).should('be.visible') // Visible
+      .and('contain', 'Cookies') // Name is correct
+      .and('have.attr', 'href', 'https://monoxatoys.com/cookies/') //Link is correct
+
+    //Link is working
+    cy.get(this.cookies).click()
+    cy.url().should('include', 'https://monoxatoys.com/cookies/')
+    }; 
 
 
 

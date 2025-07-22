@@ -88,20 +88,40 @@ it('Bottom Home functionality', () => {
   MainPage.bottomHomeFunctionality();
 });
 
-it.only('Bottom Tutorials functionality', () => {
+it('Bottom Tutorials functionality', () => {
   MainPage.bottomTutorialsFunctionality();
 });
 
-it.only('Bottom Exclusive dolls functionality', () => {
+it('Bottom Exclusive dolls functionality', () => {
   MainPage.bottomDollsFunctionality();
 });
 
-it.only('Bottom About functionality', () => {
+it('Bottom About functionality', () => {
   MainPage.bottomAboutFunctionality();
 });
 
-it.only('Bottom Contact functionality', () => {
+it('Bottom Contact functionality', () => {
   MainPage.bottomContactFunctionality();
+});
+
+it.only('About the Shop visibility', () => {
+  MainPage.aboutTheShopVisible()
+});
+
+it.only('Making a purchase functionality', () => {
+  MainPage.makingPurchaseFunctionality()
+});
+
+it.only('Terms and Conditions functionality', () => {
+  MainPage.termsConditionsFunctionality()
+});
+
+it.only('Privacy Policy functionality', () => {
+  MainPage.privacyPolicyFunctionality()
+});
+
+it.only('Cookies functionality', () => {
+  MainPage.cookiesFunctionality()
 });
 
 
