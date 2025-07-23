@@ -23,3 +23,31 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+
+//Example how I could social media links to adapt to commands
+// Cypress.Commands.add('checkBottomEmailLink', (selector) => {
+//   cy.get(selector)
+//     .should('be.visible')
+//     .and('contain', 'info@monoxatoys.com')
+//     .and('have.attr', 'href', 'mailto:info@monoxatoys.com');
+// });
+
+// Cypress.Commands.add('checkBottomFacebookIcon', (selector) => {
+//   cy.get(selector)
+//     .should('be.visible')
+//     .and('have.attr', 'href', 'https://www.facebook.com/monoxatoys/')
+//     .and('have.attr', 'target', '_blank');
+// });
+
+// Cypress.Commands.add('checkBottomInstagramIcon', (selector) => {
+//   cy.get(selector)
+//     .should('be.visible')
+//     .and('have.attr', 'href', 'https://www.instagram.com/monoxatoys/')
+//     .and('have.attr', 'target', '_blank');
+// });
+
+// And then use it in tests
+// cy.checkBottomEmailLink(this.bottomEmailLink);
+// cy.checkBottomFacebookIcon(this.bottomFacebookIcon);
+// cy.checkBottomInstagramIcon(this.bottomInstaIcon);
