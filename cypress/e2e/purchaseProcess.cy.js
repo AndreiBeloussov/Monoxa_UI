@@ -3,12 +3,15 @@ import MainPage from "../pages/MainPage";
 
 describe('Test for purchase process', () => {
 
-it.only('Add to cart check', () => {
+it('Add to cart check', () => {
     MainPage.openMainPage()
     PurchaseProcess.addToCartCheck()
 });
 
-
+it.only('Product added to cart, cart is opened', () => {
+    MainPage.openMainPage()
+    PurchaseProcess.viewCartTest()
+});
 
 
 

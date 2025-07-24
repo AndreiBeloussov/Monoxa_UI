@@ -51,3 +51,9 @@
 // cy.checkBottomEmailLink(this.bottomEmailLink);
 // cy.checkBottomFacebookIcon(this.bottomFacebookIcon);
 // cy.checkBottomInstagramIcon(this.bottomInstaIcon);
+
+
+//Add to cart
+Cypress.Commands.add('clickAddToCart', (product) => {
+     cy.get('.add-to-cart-button').eq(product).click();    //cy.clickAddToCart(product) product = number
+})
