@@ -6,6 +6,8 @@ this.itemsInCart = '.cart-icon > strong'
 this.removeFromCart = '.remove_from_cart_button'; 
 this.viewCart = '.button.wc-forward'
 this.checkout = '.button.checkout.wc-forward'
+this.productLink = 'a.woocommerce-LoopProduct-link'
+this.productInCart = 'li.woocommerce-mini-cart-item a'
 
 
 
@@ -51,6 +53,29 @@ viewCartTest() {
     .click()
     cy.url().should('include', 'https://monoxatoys.com/cart/') //Cart is opened
 };
+
+correctProductInCart (productIndex) {
+    cy.clickAddToCart(productIndex) //add a product
+    //Save a href of this product from main page
+    cy.get(this.productLink).eq(productIndex)
+    .invoke('attr', 'href')
+    .as('selectedHref') //assign an alias to href of a product
+    //Get href from product in cart
+    cy.get(this.productInCart)
+    .eq(1) //second element, it has correct href of the product
+    .invoke('attr', 'href') //get a href of this element
+    //assign a variable for this href cartHref
+    .then((cartHref) => {
+        //get an alias of product href and assign a variable to it for comaprison
+        cy.get('@selectedHref').then((selectedHref) => {
+        expect(cartHref).to.equal(selectedHref)
+       
+     //Delete product from cart
+    cy.get(this.removeFromCart).eq(0).invoke('show').click();
+    cy.get(this.productInCart).should('not.exist')
+    })
+})
+}
 
 
 

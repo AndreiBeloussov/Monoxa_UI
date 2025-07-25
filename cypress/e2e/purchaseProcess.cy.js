@@ -8,10 +8,20 @@ it('Add to cart check', () => {
     PurchaseProcess.addToCartCheck()
 });
 
-it.only('Product added to cart, cart is opened', () => {
+it('Product added to cart, cart is opened', () => {
     MainPage.openMainPage()
     PurchaseProcess.viewCartTest()
 });
+
+it('Product in cart is the same as selected', () => {
+    MainPage.openMainPage()
+    let productIndexes = [0, 1, 2];
+    productIndexes.forEach((productIndex) => {
+    PurchaseProcess.correctProductInCart(productIndex)
+    }) 
+});
+
+
 
 
 

@@ -54,6 +54,6 @@
 
 
 //Add to cart
-Cypress.Commands.add('clickAddToCart', (product) => {
-     cy.get('.add-to-cart-button').eq(product).click();    //cy.clickAddToCart(product) product = number
+Cypress.Commands.add('clickAddToCart', (productIndex) => {
+     cy.get('.add-to-cart-button').eq(productIndex).click();    //cy.clickAddToCart(product) product = number
 })
