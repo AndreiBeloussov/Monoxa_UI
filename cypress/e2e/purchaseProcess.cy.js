@@ -21,6 +21,14 @@ it('Product in cart is the same as selected', () => {
     }) 
 });
 
+it.only('Update cart, add one more product check that correct price shown', () => {
+    MainPage.openMainPage()
+    PurchaseProcess.updateCart(1)
+});
+
+it('Remove product from cart, correct message', () => {
+    
+});
 
 
 
