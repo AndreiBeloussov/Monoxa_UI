@@ -14,7 +14,7 @@ this.updateCartButton = 'button[name="update_cart"]';
 this.firstSubtotal = '.cart-price .woocommerce-Price-amount';
 this.secondSubtotal = 'td.product-subtotal .woocommerce-Price-amount';
 this.thirdSubtotal = 'td[data-title="Subtotal"]:not(.product-subtotal) .woocommerce-Price-amount';
-
+this.cartUpdatedMessage = '.message-container';
 
 
 
@@ -38,7 +38,7 @@ addToCartCheck() {
     //cy.get(this.addToCart).eq(2).click();
     cy.clickAddToCart(0) // from command.js 
     cy.get(this.popUpCart).should('be.visible') // Once item is added to cart, pop-up is visible
-    //Check that now number if items in cart changed from 0 to 1
+    //Check that now number of items in cart changed from 0 to 1
     cy.get(this.itemsInCart)
     .invoke('text') 
     .then((updatedText) =>{
@@ -110,11 +110,32 @@ updateCart(productIndex) {
       });
     });
   });
-}
+};
 
+  emptyCartCheck(productIndex) {
+    cy.clickAddToCart(productIndex) //add product
+    cy.openCart() //open cart
+    cy.get(this.minusButton).click() //remove product
+    cy.get(this.updateCartButton).click() //update cart
+    cy.wait(1000)
+    // Cart updated message
+    cy.get(this.cartUpdatedMessage).should('contain.text', 'Cart updated')
+    .should('contain.text', 'Your cart is currently empty')
+    // Price in cart is 0 
+    cy.get(this.firstSubtotal).invoke('text').then(priceText => {
+      const clean = text => parseFloat(text.trim().replace(/[^\d,]/g, '').replace(',', '.'));
+      const newPrice = clean(priceText);
+      expect(newPrice).to.equal(0);
+    })
+    // Products in cart is 0
+    cy.get(this.itemsInCart)
+    .invoke('text') 
+    .then((updatedText) =>{
+        const updatedCount = parseInt(updatedText.trim());
+        expect(updatedCount).to.equal(0);
+});
 
-
-
+  }
 
 
 }
