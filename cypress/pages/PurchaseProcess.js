@@ -15,7 +15,18 @@ this.firstSubtotal = '.cart-price .woocommerce-Price-amount';
 this.secondSubtotal = 'td.product-subtotal .woocommerce-Price-amount';
 this.thirdSubtotal = 'td[data-title="Subtotal"]:not(.product-subtotal) .woocommerce-Price-amount';
 this.cartUpdatedMessage = '.message-container';
-
+this.checkoutInCart = '.wc-proceed-to-checkout';
+//Billing information
+this.firstName = '#billing_first_name'
+this.lastName = '#billing_last_name'
+this.companyName = '#billing_company'
+this.countryRegion
+this.streetAddress = '#billing_address_1' 
+this.streetAddress2 = '#billing_address_2'
+this.postcode = '#billing_postcode'
+this.townCity
+this.phoneNumber
+this.emailAddress
 
 
 
@@ -134,8 +145,30 @@ updateCart(productIndex) {
         const updatedCount = parseInt(updatedText.trim());
         expect(updatedCount).to.equal(0);
 });
+};
 
-  }
+proceedCheckoutFromCart(productIndex){
+    cy.clickAddToCart(productIndex) //add product
+    cy.openCart() //open cart
+    cy.get(this.checkoutInCart).click() //Proceed to checkout
+    //correct URL is opened
+    cy.url().should('include', 'https://monoxatoys.com/checkout/');
+};
+
+proceedCheckoutFromHome(productIndex) {
+  cy.clickAddToCart(productIndex)
+  cy.get(this.viewCart).eq(1) //there are more than one element with this name, select the first one
+    .invoke('show')
+    .click()
+    cy.url().should('include', 'https://monoxatoys.com/checkout/');
+
+};
+
+billingDetailsEmpty(productIndex) {
+//This part is a continuation of previous test where product is added to cart and checkout page is opened
+cy.get(this.firstName).type('Andrei')
+cy.get(this.lastName).type('B')
+}
 
 
 }
