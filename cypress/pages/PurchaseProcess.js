@@ -1,3 +1,5 @@
+import { faker } from '@faker-js/faker';
+
 class PurchaseProcess {
     constructor () {
 this.addToCart = '.add-to-cart-button';
@@ -20,13 +22,13 @@ this.checkoutInCart = '.wc-proceed-to-checkout';
 this.firstName = '#billing_first_name'
 this.lastName = '#billing_last_name'
 this.companyName = '#billing_company'
-this.countryRegion
+this.countryRegion = '#billing_country'
 this.streetAddress = '#billing_address_1' 
 this.streetAddress2 = '#billing_address_2'
 this.postcode = '#billing_postcode'
-this.townCity
-this.phoneNumber
-this.emailAddress
+this.townCity = '#billing_city'
+this.phoneNumber = '#billing_phone'
+this.emailAddress = '#billing_email'
 
 
 
@@ -160,14 +162,23 @@ proceedCheckoutFromHome(productIndex) {
   cy.get(this.viewCart).eq(1) //there are more than one element with this name, select the first one
     .invoke('show')
     .click()
+    //Forwarded to correct page
     cy.url().should('include', 'https://monoxatoys.com/checkout/');
 
 };
 
-billingDetailsEmpty(productIndex) {
-//This part is a continuation of previous test where product is added to cart and checkout page is opened
-cy.get(this.firstName).type('Andrei')
-cy.get(this.lastName).type('B')
+fillBillingDetails() {
+  cy.get(this.firstName).type(faker.person.firstName());
+    cy.get(this.lastName).type(faker.person.lastName());
+    cy.get(this.companyName).type(faker.company.name());
+    // cy.get(this.countryRegion).select('Estonia'); // можно заменить на faker.location.country() + кастомный маппинг
+    cy.get(this.streetAddress).type(faker.location.streetAddress());
+    cy.get(this.streetAddress2).type(faker.location.secondaryAddress());
+    cy.get(this.townCity).type(faker.location.city());
+    cy.get(this.postcode).type(faker.location.zipCode());
+    cy.get(this.phoneNumber).type(faker.phone.number());
+    cy.get(this.emailAddress).type(faker.internet.email());
+
 }
 
 

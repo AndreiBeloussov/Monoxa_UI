@@ -39,7 +39,7 @@ it('To checkout from cart', () => {
 it.only('To checkout from Home paige ', () => {
     MainPage.openMainPage();
     PurchaseProcess.proceedCheckoutFromHome(3)
-    PurchaseProcess.billingDetailsEmpty()
+    PurchaseProcess.fillBillingDetails()
 });
 
 
